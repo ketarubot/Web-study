@@ -8,4 +8,5 @@ function MyButton() {
         <button onClick={handleClick}>Click me</button>
     )
 }
-MyButton()
+
+<MyButton />
