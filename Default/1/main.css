@@ -90,12 +90,14 @@ header {
     margin: 0;
 }
 #change {
-    background-color: indianred;
+    background-color: rgb(149, 149, 149);
     border: none;
+    border-radius: 4px;
     position: absolute;
     right: 3vw;
     margin: 10px;
-    display: none;
+    display: inline-block;
+    color: black;
 }
 .likeB {
     position: relative;
@@ -108,4 +110,7 @@ header {
     margin: 0;
     text-align: center;
     transform: scale(1.5);
+}
+#fav {
+    display: none;
 }

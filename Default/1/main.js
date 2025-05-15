@@ -1,5 +1,10 @@
 const addButton = document.getElementById('addm');
 
+const changecolorButton = document.getElementById('change');
+changecolorButton.addEventListener('click', () => {
+    console.log(Math.random());
+});
+
 let songcount = 8;
 
 let saveLikes = Array(8).fill(false);
@@ -15,6 +20,9 @@ document.body.appendChild(warningDiv);
 const deleteButton = document.createElement('button');
 deleteButton.textContent = 'x';
 deleteButton.className = 'delete';
+deleteButton.addEventListener('click', () => {
+    deleteButton.parentElement.remove();
+});
 
 function new_likeButton(likeid) {
     const likeButton = document.createElement('button');
@@ -23,30 +31,70 @@ function new_likeButton(likeid) {
     likeButton.addEventListener('click', () => {
         saveLikes[likeid] = !saveLikes[likeid];
         likeButton.textContent = saveLikes[likeid] ? '⭐️' : '☆';
+        const favoriteArea = document.getElementById('fav');
+        const likeBpa = likeButton.parentElement;
+        if (saveLikes[likeid]) {
+            likeBpa.parentElement.insertBefore(likeBpa, favoriteArea);
+        }
+        else {
+            if (saveLikes.at(likeid+1) !== undefined) {
+                const li = document.getElementById(`song${likeid+1}`);
+                likeBpa.parentElement.insertBefore(likeBpa, li);
+            }
+            else {
+                likeBpa.parentElement.appendChild(likeBpa);
+            }
+        }
     });
     return likeButton;
 }
 
 let likeButtons = Array.from({length:8}, (_, i) => new_likeButton(i));
-const removeButton = deleteButton;
 
-const songlistitems = document.getElementsByClassName('songlist');
-for (let item of songlistitems) {
-    const likeid = Number(item.id.slice(4));
-    const itemlike = likeButtons[likeid];
+function attachHoverEvents(item, likeButton, likeid) {
     item.addEventListener('mouseenter', () => {
-        item.prepend(itemlike);
-        item.appendChild(removeButton);
-        removeButton.addEventListener('click', () => {
-            removeButton.parentElement.remove();
-        });
+        item.prepend(likeButton);
+        item.appendChild(deleteButton);
     });
     item.addEventListener('mouseleave', () => {
-        removeButton.remove();
+        deleteButton.remove();
         if (!saveLikes[likeid]) {
-            itemlike.remove();
+            likeButton.remove();
         }
     });
+}
+
+function createSongItem(title, artist, id) {
+    const li = document.createElement('li');
+    li.className = 'songlist';
+    li.id = `song${id}`;
+    
+    const a = document.createElement('a');
+    a.href = `https://music.youtube.com/search?q=${title.replace(' ', '_')}`;
+    a.target = '_blank';
+    
+    const span = document.createElement('span');
+    span.className = 'title';
+    span.textContent = title;
+    
+    a.appendChild(span);
+    a.innerHTML += ` - ${artist}`;
+    li.appendChild(a);
+
+    const likeBtn = new_likeButton(id);
+    likeButtons.push(likeBtn);
+    saveLikes.push(false);
+    
+    attachHoverEvents(li, likeBtn, id);
+
+    return li;
+}
+
+const songlistitems = document.getElementsByClassName('songlist');
+for (const item of songlistitems) {
+    const likeid = Number(item.id.slice(4));
+    const itemlike = likeButtons[likeid];
+    attachHoverEvents(item, itemlike, likeid);
 }
 
 addButton.addEventListener('click', () => { // Create input element
@@ -74,38 +122,9 @@ addButton.addEventListener('click', () => { // Create input element
             const parts = inputText.split(' - ');
             if (parts.length === 2 && parts[0] && parts[1]) {
                 const songTitle = parts[0].trim();
-                const artist = parts[1].trim(); // Create new list item
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = `https://music.youtube.com/search?q=${songTitle.replace(' ', '_')}`;
-                a.target = '_blank';
-                const title = document.createElement('span');
-                title.className = 'title';
-                title.textContent = songTitle;
-                
+                const artist = parts[1].trim(); // Create new
                 const count = songcount++;
-                li.className = 'songlist';
-                li.id = `song${count}`;
-                saveLikes.push(false);
-                likeButtons.push(new_likeButton(count));
-                const itemlike = likeButtons[count];
-
-                li.addEventListener('mouseenter', () => {
-                    li.prepend(itemlike);
-                    li.appendChild(removeButton);
-                    removeButton.addEventListener('click', () => {
-                        removeButton.parentElement.remove();
-                    });
-                });
-                li.addEventListener('mouseleave', () => {
-                    removeButton.remove();
-                    if (!saveLikes[count]) {
-                        itemlike.remove();
-                    }
-                });
-                a.appendChild(title);
-                a.innerHTML += ` - ${artist}`;
-                li.appendChild(a);
+                const li = createSongItem(songTitle, artist, count);
                 
                 document.querySelector('ul.playlist').appendChild(li);
                 // Replace input back with button
@@ -120,7 +139,6 @@ addButton.addEventListener('click', () => { // Create input element
         }
     });
 
-    // Optional: if input loses focus, revert to button
     input.addEventListener('blur', () => {
         warningDiv.style.display = 'none';
         input.replaceWith(addButton);
