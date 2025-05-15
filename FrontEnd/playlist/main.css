@@ -111,6 +111,6 @@ header {
     text-align: center;
     transform: scale(1.5);
 }
-#fav {
+#fav, #last {
     display: none;
 }
