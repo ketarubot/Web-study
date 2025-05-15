@@ -5,9 +5,9 @@ changecolorButton.addEventListener('click', () => {
     console.log(Math.random());
 });
 
-let songcount = 8;
+let songcount = 1;
 
-let saveLikes = Array(8).fill(false);
+let saveLikes = Array(1).fill(false);
 
 // Create warning message container
 const warningDiv = document.createElement('div');
@@ -49,7 +49,7 @@ function new_likeButton(likeid) {
     return likeButton;
 }
 
-let likeButtons = Array.from({length:8}, (_, i) => new_likeButton(i));
+let likeButtons = [new_likeButton(0)];
 
 function attachHoverEvents(item, likeButton, likeid) {
     item.addEventListener('mouseenter', () => {
@@ -66,11 +66,11 @@ function attachHoverEvents(item, likeButton, likeid) {
 
 function createSongItem(title, artist, id) {
     const li = document.createElement('li');
-    li.className = 'songlist';
     li.id = `song${id}`;
     
     const a = document.createElement('a');
-    a.href = `https://music.youtube.com/search?q=${title.replace(' ', '_')}`;
+    const searchQuery = `${artist} ${title}`;
+    a.href = `https://music.youtube.com/search?q=${searchQuery}`;
     a.target = '_blank';
     
     const span = document.createElement('span');
@@ -90,12 +90,8 @@ function createSongItem(title, artist, id) {
     return li;
 }
 
-const songlistitems = document.getElementsByClassName('songlist');
-for (const item of songlistitems) {
-    const likeid = Number(item.id.slice(4));
-    const itemlike = likeButtons[likeid];
-    attachHoverEvents(item, itemlike, likeid);
-}
+const song0 = document.getElementById('song0')
+attachHoverEvents(song0, new_likeButton(0), 0);
 
 addButton.addEventListener('click', () => { // Create input element
     const input = document.createElement('input');
