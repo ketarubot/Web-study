@@ -114,3 +114,24 @@ header {
 #fav, #last {
     display: none;
 }
+aside {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+}
+aside div {
+    width: 180px;
+    height: 350px;
+    background-color: aquamarine;
+    color: black;
+}
+aside button {
+    position: absolute;
+    color: black;
+    border-radius: 0;
+    border: none;
+    display: inline-block;
+    width: 1em;
+    right: 0px;
+    top: 0px;
+}

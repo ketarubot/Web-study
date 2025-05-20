@@ -7,6 +7,16 @@ changecolorButton.addEventListener('click', () => {
 
 let songcount = 1;
 
+const adremoveButton = document.getElementById('ad_remove');
+adremoveButton.addEventListener('click', () => {
+    adremoveButton.parentElement.remove();
+})
+
+const ad = document.getElementById('ad');
+ad.addEventListener('click', () => {
+    location.assign('../../../../myWeb/10/10-1.html');
+});
+
 let saveLikes = Array(1).fill(false);
 
 // Create warning message container
@@ -69,8 +79,7 @@ function createSongItem(title, artist, id) {
     li.id = `song${id}`;
     
     const a = document.createElement('a');
-    const searchQuery = `${artist} ${title}`;
-    a.href = `https://music.youtube.com/search?q=${searchQuery}`;
+    a.href = `https://youtube.com/search?q=${artist} ${title}`;
     a.target = '_blank';
     
     const span = document.createElement('span');
