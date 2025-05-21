@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prismatics</title>
+    <style>
+        td {
+            border: 1px solid black;
+            padding: 2px;
+        }
+        sub {
+            font-size: 10px;
+        }
+        th {
+            border: 0.5px solid rgb(141, 141, 141);
+            padding: 5px;
+        }
+        table tr * {
+            transition: transform 0.2s ease;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .empty {
+            border: none;
+        }
+        table {
+            margin: auto;
+        }
+        td:not([class]):hover, th:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 4px gray;
+        }
+    </style>
+</head>
+<body id="path">
+    <table>
+        <tr>
+            <td id="section" class="empty">주기\족</td>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+            <th>16</th>
+            <th>17</th>
+            <th>18</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td><sub>1</sub>H</td>
+            <td class="empty" colspan="16"></td>
+            <td><sub>2</sub>He</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td><sub>3</sub>Li</td>
+            <td><sub>4</sub>Be</td>
+            <td class="empty" colspan="10"></td>
+            <td><sub>5</sub>B</td>
+            <td><sub>6</sub>C</td>
+            <td><sub>7</sub>N</td>
+            <td><sub>8</sub>O</td>
+            <td><sub>9</sub>F</td>
+            <td><sub>10</sub>Ne</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td><sub>11</sub>Na</td>
+            <td><sub>12</sub>Mg</td>
+            <td class="empty" colspan="10"></td>
+            <td><sub>13</sub>Al</td>
+            <td><sub>14</sub>Si</td>
+            <td><sub>15</sub>P</td>
+            <td><sub>16</sub>S</td>
+            <td><sub>17</sub>Cl</td>
+            <td><sub>18</sub>Ar</td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td><sub>19</sub>K</td>
+            <td><sub>20</sub>Ca</td>
+            <td><sub>21</sub>Sc</td>
+            <td><sub>22</sub>Ti</td>
+            <td><sub>23</sub>V</td>
+            <td><sub>24</sub>Cr</td>
+            <td><sub>25</sub>Mn</td>
+            <td><sub>26</sub>Fe</td>
+            <td><sub>27</sub>Co</td>
+            <td><sub>28</sub>Ni</td>
+            <td><sub>29</sub>Cu</td>
+            <td><sub>30</sub>Zn</td>
+            <td><sub>31</sub>Ga</td>
+            <td><sub>32</sub>Ge</td>
+            <td><sub>33</sub>As</td>
+            <td><sub>34</sub>Se</td>
+            <td><sub>35</sub>Br</td>
+            <td><sub>36</sub>Kr</td>
+        </tr>
+        <tr>
+            <th>5</th>
+            <td><sub>37</sub>Rb</td>
+            <td><sub>38</sub>Sr</td>
+            <td><sub>39</sub>Y</td>
+            <td><sub>40</sub>Zr</td>
+            <td><sub>41</sub>Nb</td>
+            <td><sub>42</sub>Mo</td>
+            <td><sub>43</sub>Tc</td>
+            <td><sub>44</sub>Ru</td>
+            <td><sub>45</sub>Rh</td>
+            <td><sub>46</sub>Pd</td>
+            <td><sub>47</sub>Ag</td>
+            <td><sub>48</sub>Cd</td>
+            <td><sub>49</sub>In</td>
+            <td><sub>50</sub>Sn</td>
+            <td><sub>51</sub>Sb</td>
+            <td><sub>52</sub>Te</td>
+            <td><sub>53</sub>I</td>
+            <td><sub>54</sub>Xe</td>
+        </tr>
+        <tr>
+            <th>6</th>
+            <td><sub>55</sub>Cs</td>
+            <td><sub>56</sub>Ba</td>
+            <td>*</td>
+            <td><sub>72</sub>Hf</td>
+            <td><sub>73</sub>Ta</td>
+            <td><sub>74</sub>W</td>
+            <td><sub>75</sub>Re</td>
+            <td><sub>76</sub>Os</td>
+            <td><sub>77</sub>Ir</td>
+            <td><sub>78</sub>Pt</td>
+            <td><sub>79</sub>Au</td>
+            <td><sub>80</sub>Hg</td>
+            <td><sub>81</sub>Tl</td>
+            <td><sub>82</sub>Pb</td>
+            <td><sub>83</sub>Bi</td>
+            <td><sub>84</sub>Po</td>
+            <td><sub>85</sub>At</td>
+            <td><sub>86</sub>Rn</td>
+        </tr>
+        <tr>
+            <th>7</th>
+            <td><sub>87</sub>Fr</td>
+            <td><sub>88</sub>Ra</td>
+            <td>**</td>
+            <td><sub>104</sub>Rf</td>
+            <td><sub>105</sub>Db</td>
+            <td><sub>106</sub>Sg</td>
+            <td><sub>107</sub>Bh</td>
+            <td><sub>108</sub>Hs</td>
+            <td><sub>109</sub>Mt</td>
+            <td><sub>110</sub>Ds</td>
+            <td><sub>111</sub>Rg</td>
+            <td><sub>112</sub>Cn</td>
+            <td><sub>113</sub>Nh</td>
+            <td><sub>114</sub>Fl</td>
+            <td><sub>115</sub>Mc</td>
+            <td><sub>116</sub>Lv</td>
+            <td><sub>117</sub>Ts</td>
+            <td><sub>118</sub>Og</td>
+        </tr>
+        <tr>
+            <td class="empty" rowspan="3"></td>
+            <td class="empty" colspan="18">&nbsp;</td>
+        </tr>
+        <tr>
+        <td class="empty" colspan="2">*란타넘족</td>
+        <td><sub>57</sub>La</td>
+        <td><sub>58</sub>Ce</td>
+        <td><sub>59</sub>Pr</td>
+        <td><sub>60</sub>Nd</td>
+        <td><sub>61</sub>Pm</td>
+        <td><sub>62</sub>Sm</td>
+        <td><sub>63</sub>Eu</td>
+        <td><sub>64</sub>Gd</td>
+        <td><sub>65</sub>Tb</td>
+        <td><sub>66</sub>Dy</td>
+        <td><sub>67</sub>Ho</td>
+        <td><sub>68</sub>Er</td>
+        <td><sub>69</sub>Tm</td>
+        <td><sub>70</sub>Yb</td>
+        <td><sub>71</sub>Lu</td>
+    </tr>
+    <tr>
+        <td class="empty" colspan="2">**악티늄족</td>
+        <td><sub>89</sub>Ac</td>
+        <td><sub>90</sub>Th</td>
+        <td><sub>91</sub>Pa</td>
+        <td><sub>92</sub>U</td>
+        <td><sub>93</sub>Np</td>
+        <td><sub>94</sub>Pu</td>
+        <td><sub>95</sub>Am</td>
+        <td><sub>96</sub>Cm</td>
+        <td><sub>97</sub>Bk</td>
+        <td><sub>98</sub>Cf</td>
+        <td><sub>99</sub>Es</td>
+        <td><sub>100</sub>Fm</td>
+        <td><sub>101</sub>Md</td>
+        <td><sub>102</sub>No</td>
+        <td><sub>103</sub>Lr</td>
+    </tr>
+    </table>
+    <script>
+        const body = document.getElementById('path');
+        const td = document.getElementsByTagName('td');
+        for (const item of td) {
+            if (!(item.className === 'empty')) {
+                console.log('excuted');
+                item.addEventListener('click', () => {
+                    const add = document.createElement('p');
+                    add.innerHTML = item.innerHTML;
+                    body.appendChild(add);
+                    const E = item.innerHTML.slice(5);
+                    let elNum = '';
+                    for (const ch of E) {
+                        if (ch === '<') break;
+                        elNum += ch;
+                    }
+                    elNum = Number(elNum);
+                    console.log(elNum);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
