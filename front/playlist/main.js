@@ -86,6 +86,27 @@ function createSongItem(title, artist, id) {
     span.className = 'title';
     span.textContent = title;
     
+    const albumCover = document.createElement('img');
+    fetch(`https://itunes.apple.com/search?term=${artist.replaceAll(' ', '+')}+${title.replaceAll(' ', '+')}&media=music`)
+    .then(res => res.json())
+    .then(data => {
+        if (data.results && data.results.length > 0) {
+            const imageUrl = data.results[0].artworkUrl100;
+            console.log(imageUrl);
+
+            albumCover.src = imageUrl.replace('100x100', '20x20'); // 더 큰 이미지도 가능
+            albumCover.alt = `${title} 앨범 커버`;
+            albumCover.style.width = '20px'; // 필요 시 크기 설정
+            albumCover.style.height = '20px';
+            li.prepend(albumCover);
+        } else {
+            console.warn('앨범 커버를 찾을 수 없습니다.');
+        }
+    })
+    .catch(err => {
+        console.error('iTunes API 오류:', err);
+    });
+
     a.appendChild(span);
     a.innerHTML += ` - ${artist}`;
     li.appendChild(a);

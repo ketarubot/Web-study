@@ -8,9 +8,7 @@
         td {
             border: 1px solid black;
             padding: 2px;
-        }
-        sub {
-            font-size: 10px;
+            width: 30px;
         }
         th {
             border: 0.5px solid rgb(141, 141, 141);
@@ -20,6 +18,7 @@
             transition: transform 0.2s ease;
             border-radius: 8px;
             text-align: center;
+            font-size: 12px;
         }
         .empty {
             border: none;
@@ -31,12 +30,15 @@
             transform: scale(1.05);
             box-shadow: 0px 0px 4px gray;
         }
-    </style>
+        sub{
+            font-size: 10px !important;
+        }
+        </style>
 </head>
 <body id="path">
     <table>
         <tr>
-            <td id="section" class="empty">주기\족</td>
+            <td id="section" class="empty" style="width: 36px">주기\족</td>
             <th>1</th>
             <th>2</th>
             <th>3</th>
@@ -132,7 +134,7 @@
             <th>6</th>
             <td><sub>55</sub>Cs</td>
             <td><sub>56</sub>Ba</td>
-            <td>*</td>
+            <td id="la" class="empty">*</td>
             <td><sub>72</sub>Hf</td>
             <td><sub>73</sub>Ta</td>
             <td><sub>74</sub>W</td>
@@ -153,7 +155,7 @@
             <th>7</th>
             <td><sub>87</sub>Fr</td>
             <td><sub>88</sub>Ra</td>
-            <td>**</td>
+            <td id="ac" class="empty">**</td>
             <td><sub>104</sub>Rf</td>
             <td><sub>105</sub>Db</td>
             <td><sub>106</sub>Sg</td>
@@ -215,8 +217,7 @@
         const body = document.getElementById('path');
         const td = document.getElementsByTagName('td');
         for (const item of td) {
-            if (!(item.className === 'empty')) {
-                console.log('excuted');
+            if (item.className === '' && item.id === '') {
                 item.addEventListener('click', () => {
                     const add = document.createElement('p');
                     add.innerHTML = item.innerHTML;
