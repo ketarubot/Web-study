@@ -1,6 +1,7 @@
 # FastAPI import
 from fastapi import FastAPI
 
+
 # FastAPI instance 생성. 
 app = FastAPI()
 
@@ -23,3 +24,11 @@ def greet(name: str):
     - 이름 받아서 Hello, {이름}! 출력
     '''
     return f'Hello, {name}!'
+
+@app.get('/help', summary='도움말', tags=['simple'])
+def helper():
+    '''
+    도움말
+    - 각 path의 기능을 설명
+    '''
+    return {'/': 'hello world 출력', '/greet/{name}': 'Hello, {name}! 출력'}
