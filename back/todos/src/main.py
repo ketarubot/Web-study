@@ -25,6 +25,14 @@ def greet(name: str):
     '''
     return f'Hello, {name}!'
 
+@app.get('/add/{a}_{b}', summary='더하기', tags=['simple'])
+def add(a: int, b: int):
+    '''
+    더하기
+    - a, b 받아서 출력(문자열일 경우 오류)
+    '''
+    return a+b
+
 @app.get('/help', summary='도움말', tags=['simple'])
 def helper():
     '''
