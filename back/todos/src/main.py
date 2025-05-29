@@ -29,9 +29,16 @@ def greet(name: str):
 def add(a: int, b: int):
     '''
     더하기
-    - a, b 받아서 출력(문자열일 경우 오류)
+    - a, b 받아서 더한 값을 출력(문자열이 들어올 경우 오류)
     '''
     return a+b
+
+@app.get('/mult/{a}_{b}', summary='곱하기', tags=['simple'])
+def multiple(a: int, b: int):
+    '''
+    곱하기
+    - a, b 받아서 곱한 값을 출력(문자열이 들어올 경우 오류)
+    '''
 
 @app.get('/help', summary='도움말', tags=['simple'])
 def helper():
