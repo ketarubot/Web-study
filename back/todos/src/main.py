@@ -40,10 +40,23 @@ def multiple(a: int, b: int):
     - a, b 받아서 곱한 값을 출력(문자열이 들어올 경우 오류)
     '''
 
+@app.get('/bj/{prid}', summary='백준', tags=['simple'])
+def bjpr(prid: int | str):
+    '''
+    백준
+    - prid 받아서 해당 번호의 백준 문제 링크 출력
+    '''
+    return f'https://www.acmicpc.net/problem/{prid}'
+
 @app.get('/help', summary='도움말', tags=['simple'])
 def helper():
     '''
     도움말
     - 각 path의 기능을 설명
+    /: {'message':'Hello World'}
+    /greet/{name}: 'Hello, {name}!'
+    /add/{a}_{b}: {a+b}
+    /mult/{a}_{b}: {a+b}
+    /bj/{prid}: 'https://www.acmicpc.net/problem/{prid}'
     '''
     return {'/': 'hello world 출력', '/greet/{name}': 'Hello, {name}! 출력'}
