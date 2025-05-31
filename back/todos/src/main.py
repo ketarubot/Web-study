@@ -39,6 +39,7 @@ def multiple(a: int, b: int):
     곱하기
     - a, b 받아서 곱한 값을 출력(문자열이 들어올 경우 오류)
     '''
+    return a*b
 
 @app.get('/bj/{prid}', summary='백준', tags=['simple'])
 def bjpr(prid: int | str):
@@ -59,4 +60,11 @@ def helper():
     /mult/{a}_{b}: {a+b}
     /bj/{prid}: 'https://www.acmicpc.net/problem/{prid}'
     '''
-    return {'/': 'hello world 출력', '/greet/{name}': 'Hello, {name}! 출력'}
+    output = {
+        '/': "{'message':'Hello World'}",
+        '/greet/{name}': 'Hello, {name}!',
+        '/add/{a}_{b}': '{a+b}',
+        '/mult/{a}_{b}': '{a+b}',
+        '/bj/{prid}': 'https://www.acmicpc.net/problem/{prid}',
+    }
+    return output
