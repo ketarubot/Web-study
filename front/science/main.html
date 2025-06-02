@@ -4,36 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prismatics</title>
-    <style>
-        td {
-            border: 1px solid black;
-            padding: 2px;
-            width: 30px;
-        }
-        th {
-            border: 0.5px solid rgb(141, 141, 141);
-            padding: 5px;
-        }
-        table tr * {
-            transition: transform 0.2s ease;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 12px;
-        }
-        .empty {
-            border: none;
-        }
-        table {
-            margin: auto;
-        }
-        td:not([class]):hover, th:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 0px 4px gray;
-        }
-        sub{
-            font-size: 10px !important;
-        }
-        </style>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body id="path">
     <table>
@@ -213,26 +184,6 @@
         <td><sub>103</sub>Lr</td>
     </tr>
     </table>
-    <script>
-        const body = document.getElementById('path');
-        const td = document.getElementsByTagName('td');
-        for (const item of td) {
-            if (item.className === '' && item.id === '') {
-                item.addEventListener('click', () => {
-                    const add = document.createElement('p');
-                    add.innerHTML = item.innerHTML;
-                    body.appendChild(add);
-                    const E = item.innerHTML.slice(5);
-                    let elNum = '';
-                    for (const ch of E) {
-                        if (ch === '<') break;
-                        elNum += ch;
-                    }
-                    elNum = Number(elNum);
-                    console.log(elNum);
-                });
-            }
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
